@@ -7,7 +7,7 @@
 {{/parameters}}
  * 
  */
- {{&className}}.prototype.{{&methodName}} = function(parameters){
+ {{&className}}.prototype.{{&methodName}} = function(parameters, body){
     if(parameters === undefined) {
         parameters = {};
     }
@@ -16,7 +16,7 @@
     var domain = this.domain;
     var path = '{{&path}}';
     
-    var body;
+
     var queryParameters = {};
     var headers = {};
     var form = {};
@@ -49,11 +49,6 @@
             {{/isSingleton}}
         {{/isHeaderParameter}}
         
-        {{#isBodyParameter}}
-            if(parameters.{{&camelCaseName}} !== undefined){
-                body = parameters['{{&camelCaseName}}'];
-            }
-        {{/isBodyParameter}}
 
          {{#isFormParameter}}
             {{#isSingleton}}
